@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "ES2022", // Or a newer target if needed
+		"module": "NodeNext", // Use NodeNext for modern Node.js ESM support
+		"outDir": "./dist",
+		"rootDir": "./", // Assuming index.ts is at the root
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "NodeNext", // Required with module: NodeNext
+		// Adding declaration to generate type definitions
+		"declaration": true
+	},
+	"include": ["index.ts", "src/**/*.ts"], // Include your main entry point
+	"exclude": ["node_modules", "dist"]
+}

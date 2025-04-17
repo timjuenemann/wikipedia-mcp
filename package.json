@@ -1,0 +1,32 @@
+{
+  "name": "wikipedia-mcp",
+  "version": "0.6.2",
+  "description": "MCP server for Wikipedia",
+  "license": "MIT",
+  "author": "Tim Jünemann",
+  "homepage": "https://github.com/timjuenemann/wikipedia-mcp",
+  "bugs": "https://github.com/timjuenemann/wikipedia-mcp/issues",
+  "type": "module",
+  "bin": {
+    "wikipedia-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "esbuild index.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.js",
+    "build:inspect": "npm run build && npx @modelcontextprotocol/inspector@0.9.0 node dist/index.js",
+    "watch": "esbuild index.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.js --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/turndown": "^5.0.5",
+    "esbuild": "^0.25.2",
+    "typescript": "^5.8.3",
+    "zod": "^3.24.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.0",
+    "turndown": "^7.2.0"
+  }
+}

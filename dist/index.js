@@ -24598,7 +24598,7 @@ function convertHtmlToMarkdown(htmlContent) {
 }
 
 // index.ts
-var USER_AGENT = "WikipediaMCPServer/1.0.0 (https://github.com/timjuenemann/wikipedia-js-mcp)";
+var USER_AGENT = "WikipediaMCPServer/1.0.0 (https://github.com/timjuenemann/wikipedia-mcp)";
 var WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php";
 async function fetchFromWikipedia(params) {
   const url = new URL(WIKIPEDIA_API_URL);
@@ -24624,11 +24624,14 @@ async function searchWikipedia(query) {
   });
   return (data?.query?.search || []).map((item) => {
     const markdownSnippet = convertHtmlToMarkdown(item.snippet || "");
+    const formattedText = `**${item.title}**
+
+${markdownSnippet}
+
+Article link: https://en.wikipedia.org/?curid=${item.pageid}`;
     return {
-      title: item.title,
-      snippet: markdownSnippet,
-      url: `https://en.wikipedia.org/?curid=${item.pageid}`,
-      pageId: item.pageid
+      type: "text",
+      text: formattedText
     };
   });
 }

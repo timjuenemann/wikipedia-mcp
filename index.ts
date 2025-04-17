@@ -47,7 +47,9 @@ async function fetchFromWikipedia(params: Record<string, string>) {
 /**
  * Search Wikipedia for articles matching a query
  */
-async function searchWikipedia(query: string) {
+async function searchWikipedia(
+  query: string
+): Promise<{ type: "text"; text: string }[]> {
   const data = await fetchFromWikipedia({
     action: "query",
     list: "search",
@@ -56,12 +58,12 @@ async function searchWikipedia(query: string) {
 
   return (data?.query?.search || []).map((item: WikipediaSearchResult) => {
     const markdownSnippet = convertHtmlToMarkdown(item.snippet || "");
+    // Format the result to include title and link in the text
+    const formattedText = `**${item.title}**\n\n${markdownSnippet}…\n\nArticle link: https://en.wikipedia.org/?curid=${item.pageid}`;
 
     return {
-      title: item.title,
-      snippet: markdownSnippet,
-      url: `https://en.wikipedia.org/?curid=${item.pageid}`,
-      pageId: item.pageid,
+      type: "text",
+      text: formattedText,
     };
   });
 }
@@ -72,7 +74,7 @@ async function searchWikipedia(query: string) {
 async function getWikipediaArticle(options: {
   title?: string;
   pageId?: number;
-}) {
+}): Promise<string> {
   const { title, pageId } = options;
 
   const params: Record<string, string> = {

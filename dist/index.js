@@ -24598,7 +24598,7 @@ function convertHtmlToMarkdown(htmlContent) {
 }
 
 // index.ts
-var USER_AGENT = "WikipediaMCPServer/1.0.0 (https://github.com/timjuenemann/wikipedia-mcp; 14848797+timjuenemann@users.noreply.github.com)";
+var USER_AGENT = "WikipediaMCPServer/1.0.0 (https://github.com/timjuenemann/wikipedia-mcp)";
 var WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php";
 async function fetchFromWikipedia(params) {
   const url = new URL(WIKIPEDIA_API_URL);

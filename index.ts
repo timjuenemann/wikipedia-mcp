@@ -7,7 +7,7 @@ import { convertHtmlToMarkdown } from "./src/utils/htmlToMarkdown.js";
 
 // Constants
 const USER_AGENT =
-  "WikipediaMCPServer/1.0.0 (https://github.com/timjuenemann/wikipedia-mcp; 14848797+timjuenemann@users.noreply.github.com)";
+  "WikipediaMCPServer/1.0.0 (https://github.com/timjuenemann/wikipedia-mcp)";
 const WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php";
 
 // Interfaces

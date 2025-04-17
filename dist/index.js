@@ -24626,7 +24626,7 @@ async function searchWikipedia(query) {
     const markdownSnippet = convertHtmlToMarkdown(item.snippet || "");
     const formattedText = `**${item.title}**
 
-${markdownSnippet}
+${markdownSnippet}\u2026
 
 Article link: https://en.wikipedia.org/?curid=${item.pageid}`;
     return {

@@ -27,7 +27,7 @@ Most AI tools support a JSON-based configuration for MCP servers looking like th
   "mcpServers": {
     "Wikipedia": {
       "command": "npx",
-      "args": ["wikipedia-mcp"]
+      "args": ["-y", "wikipedia-mcp"]
     }
   }
 }
